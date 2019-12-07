@@ -1,0 +1,74 @@
+{
+  "projectName": "uf",
+  "projectOwner": "uSwitch",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "domtronn",
+      "name": "Dom Charlesworth",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/5881414?v=4",
+      "profile": "http://domcharlesworth.co.uk",
+      "contributions": [
+        "code",
+        "doc",
+        "ideas",
+        "plugin"
+      ]
+    },
+    {
+      "login": "annez",
+      "name": "David Annez",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/1567681?v=4",
+      "profile": "http://davidannez.com",
+      "contributions": [
+        "code",
+        "doc",
+        "ideas",
+        "plugin"
+      ]
+    },
+    {
+      "login": "phelma",
+      "name": "Phil Helm",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/4057948?v=4",
+      "profile": "http://phelm.co.uk",
+      "contributions": [
+        "code",
+        "doc"
+      ]
+    },
+    {
+      "login": "tomasz-tomczyk",
+      "name": "Tomasz Tomczyk",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/182303?v=4",
+      "profile": "http://tomasztomczyk.com/",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "zzeniou86",
+      "name": "Zen",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/1152272?v=4",
+      "profile": "https://github.com/zzeniou86",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "dcampoy",
+      "name": "dcampoy",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/1517957?v=4",
+      "profile": "https://github.com/dcampoy",
+      "contributions": [
+        "code"
+      ]
+    }
+  ]
+}

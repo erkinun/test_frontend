@@ -1,0 +1,16 @@
+{
+  "name": "migrations",
+  "version": "1.0.0",
+  "description": "",
+  "main": ".migration-core.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Dom Charlseworth <dominic.charlesworth@uswitch.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "chalk": "^2.4.2",
+    "diff": "^4.0.1",
+    "inquirer": "^6.3.1"
+  }
+}

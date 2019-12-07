@@ -1,0 +1,15 @@
+{
+  "server": {
+    "production": "",
+    "development": ""
+  },
+  "client": {
+    "production": "",
+    "development": ""
+  },
+  "zipkin": {
+    "default": "http://localhost:9411/api/v2/spans",
+    "development": "http://localhost:9411/api/v2/spans",
+    "production": "http://zipkin-collector.cloud.svc.cluster.local:9411/api/v2/spans"
+  }
+}

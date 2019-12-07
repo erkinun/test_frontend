@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+    <meta charSet='utf-8' />
+    <%- head && head.title.toString() %>
+    <%- head && head.link.toString() %>
+    <%- head && head.meta.toString() %>
+
+    <!-- LINKS -->
+    <%- linkTags %>
+
+    <script>
+      window.__APP_SENTRY_DSN__=<%- JSON.stringify(sentryDSN) %>;
+      window.__APP_ENV__=<%- JSON.stringify(env) %>;
+      <% if (release) { %>
+        window.__APP_VERSION__=<%- JSON.stringify(release) %>
+      <% } %>
+    </script>
+
+    <!--# block name="shush"--><!--# endblock-->
+    <!--# include virtual="/includes/pre" stub="shush"-->
+
+    <!-- STYLES -->
+    <%- styleTags %>
+
+    <!-- STATE -->
+    <% if (initialState) { %>
+      <script>
+       window.__initialState__=<%- JSON.stringify(initialState).replace(/</g, '\\u003c') %>
+      </script>
+    <% } %>
+  </head>
+  <body>
+    <!--# include virtual="/includes/header" stub="shush"-->
+    <div id="app"><%- markup %></div>
+    <!--# include virtual="/includes/footer" stub="shush"-->
+    <!-- SCRIPTS -->
+    <%- scriptTags %>
+  </body>
+</html>

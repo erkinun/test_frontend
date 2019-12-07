@@ -1,0 +1,18 @@
+{
+  "id": "urls",
+  "description": "Schema to define config for urls",
+  "type": "object",
+  "definitions": {
+    "url": { "type": "string", "pattern": "^http" }
+  },
+  "properties": {
+    "production": {
+      "type": "object",
+      "required": [ "development", "production" ],
+
+      "properties": {
+        "development"
+      }
+    }
+  }
+}
