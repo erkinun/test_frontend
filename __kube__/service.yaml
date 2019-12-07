@@ -1,0 +1,45 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-app-{{ .Env.DRONE_DEPLOY_TO }}
+  namespace: my-team
+spec:
+  ports:
+  - name: app-port
+    port: 80
+    targetPort: 3000
+    protocol: TCP
+  - name: meta-port
+    port: 81
+    targetPort: 3050
+    protocol: TCP
+  selector:
+    app: my-app
+    environment: {{ .Env.DRONE_DEPLOY_TO }}
+    team: my-team
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: my-app-{{ .Env.DRONE_DEPLOY_TO }}
+  namespace: my-team
+  annotations:
+    ingress.kubernetes.io/configuration-snippet: gzip off;
+    ingress.kubernetes.io/force-ssl-redirect: "true"
+    com.uswitch.heimdall/5xx-rate: "0.01"
+
+    kubernetes.io/ingress.class: internal
+spec:
+  rules:
+  - host: my-app-{{ .Env.DRONE_DEPLOY_TO }}.internal.usw.co
+    http:
+      paths:
+      - path: /status
+        backend:
+          serviceName: my-app-{{ .Env.DRONE_DEPLOY_TO }}
+          servicePort: meta-port
+      - path: /
+        backend:
+          serviceName: my-app-{{ .Env.DRONE_DEPLOY_TO }}
+          servicePort: app-port
