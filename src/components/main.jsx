@@ -5,8 +5,5 @@ import '../styles/main.scss'
 
 export default () =>
   <div>
-    <Helmet>
-      <title>Default app</title>
-      <meta name='description' content='default meta' />
-    </Helmet>
+    Hello world!
   </div>
