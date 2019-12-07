@@ -39,6 +39,16 @@ pipeline:
     when:
       event: deployment
       environment: staging
+  sentry-sourcemaps:
+    when:
+      event: push
+      branch: master
+    image: getsentry/sentry-cli:1.35
+    secrets: [ SENTRY_AUTH_TOKEN ]
+    commands:
+      - sentry-cli releases -o uswitchcom -p my-app new my-app-${DRONE_COMMIT_SHA:0:8}
+      - sentry-cli releases -o uswitchcom -p my-app files my-app-${DRONE_COMMIT_SHA:0:8} upload-sourcemaps build --rewrite --url-prefix /opt/my-app/build
+
     image: registry.usw.co/drone/deployment:latest
     tag_prefix: ${DRONE_DEPLOY_TO}
     secrets: [ KUBE_CA, KUBE_TOKEN, KUBE_SERVER ]
@@ -60,3 +70,12 @@ pipeline:
       namespace: my-team
     environment:
       replicas: "4"
+
+  notify-sentry-deployment:
+    when:
+      event: deployment
+    image: getsentry/sentry-cli:1.35
+    secrets: [ SENTRY_AUTH_TOKEN ]
+    commands:
+      - sentry-cli releases -o uswitchcom -p my-app finalize my-app-${DRONE_COMMIT_SHA:0:8}
+      - sentry-cli releases -o uswitchcom -p my-app deploys my-app-${DRONE_COMMIT_SHA:0:8} new -e ${DRONE_DEPLOY_TO}
